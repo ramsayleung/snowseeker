@@ -63,6 +63,7 @@
 		5791891E2BC3AE6B00F3624E /* ResortDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortDetailsView.swift; sourceTree = "<group>"; };
 		579189202BC4C85C00F3624E /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		579189222BC4DA2800F3624E /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		579189242BC507DA00F3624E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +94,7 @@
 		573AA44B2BC1CB3200272A56 = {
 			isa = PBXGroup;
 			children = (
+				579189242BC507DA00F3624E /* README.md */,
 				573AA4562BC1CB3200272A56 /* SnowSeeker */,
 				573AA4682BC1CB3300272A56 /* SnowSeekerTests */,
 				573AA4722BC1CB3300272A56 /* SnowSeekerUITests */,
