@@ -7,16 +7,38 @@
 
 import SwiftUI
 
+enum SortingOrder {
+    case defaultOrder
+    case alphaOrder
+    case countryOrder
+}
+
 struct ContentView: View {
     let resorts : [Resort] = Bundle.main.decode("resorts.json")
     @State private var searchText = ""
     @State private var favorites = Favorites()
+    @State private var sortOrder = SortingOrder.defaultOrder
+    
+    var sortedResort: [Resort] {
+        switch sortOrder {
+        case .defaultOrder:
+            return resorts
+        case .alphaOrder:
+            return resorts.sorted { a, b in
+                a.name < b.name
+            }
+        case .countryOrder:
+            return resorts.sorted { a, b in
+                a.country < b.country
+            }
+        }
+    }
     
     var filteredResort: [Resort] {
         if searchText.isEmpty {
-            return resorts
+            return sortedResort
         } else{
-            return resorts.filter {$0.name.localizedStandardContains(searchText)}
+            return sortedResort.filter {$0.name.localizedStandardContains(searchText)}
         }
     }
     
@@ -55,6 +77,26 @@ struct ContentView: View {
                 ResortView(resort: resort)
             }
              .searchable(text: $searchText, prompt: "Search for a resort")
+             .toolbar {
+                 ToolbarItem(placement: .topBarTrailing){
+                     Menu("Sort by", systemImage: "arrow.up.arrow.down"){
+                         Picker("Order", selection: $sortOrder){
+                             Text("Sort by Alphabetical")
+                                 .tag(
+                                    SortingOrder.alphaOrder
+                                 )
+                             Text("Sort by Country")
+                                 .tag(
+                                    SortingOrder.countryOrder
+                                 )
+                             Text("Sort by Default")
+                                 .tag(
+                                    SortingOrder.defaultOrder
+                                 )
+                         }
+                     }
+                 }
+             }
         } detail: {
             WelcomeView()
         }
